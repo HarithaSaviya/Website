@@ -15,7 +15,7 @@ export function Navbar() {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Shop", href: "/shop" },
+    // { name: "Shop", href: "/shop" },
     { name: "Automation", href: "/automation" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
@@ -43,13 +43,13 @@ export function Navbar() {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-4">
-            <Button asChild variant="ghost" size="sm">
+            {/* <Button asChild variant="ghost" size="sm">
               <Link href="/login">
                 <User className="h-4 w-4 mr-2" />
                 Login
               </Link>
-            </Button>
-            <Button asChild variant="ghost" size="sm" className="relative">
+            </Button> */}
+            {/* <Button asChild variant="ghost" size="sm" className="relative">
               <Link href="/cart">
                 <ShoppingCart className="h-4 w-4" />
                 {itemCount > 0 && (
@@ -58,7 +58,7 @@ export function Navbar() {
                   </Badge>
                 )}
               </Link>
-            </Button>
+            </Button> */}
 
             {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
