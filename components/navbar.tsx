@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, ShoppingCart, Leaf, User } from "lucide-react"
 import { useCart } from "@/components/cart-provider"
+import Image from "next/image"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,9 +28,15 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Leaf className="h-8 w-8 text-green-600" />
-            <span className="text-xl font-bold text-green-800">Haritha Saviya</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo2.png"
+              alt="Haritha Saviya Logo"
+              width={80}
+              height={40}
+              className="h-10"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

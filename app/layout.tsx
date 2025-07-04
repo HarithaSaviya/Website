@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Premium greenhouse vegetables, outdoor crops, nursery plants, and IoT automation systems for modern agriculture.",
   keywords: "greenhouse vegetables, nursery plants, IoT agriculture, smart farming, automation systems",
-    generator: 'v0.dev'
+    generator: 'haritha-saviya',
 }
 
 export default function RootLayout({
@@ -24,6 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.ico" />
+        {/* Or use .png: <link rel="icon" type="image/png" href="/favicon.png" /> */}
+      </head>
       <body className={inter.className}>
         <CartProvider>
           <Navbar />
