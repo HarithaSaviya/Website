@@ -18,9 +18,9 @@ export default function HomePage() {
                 systems for modern agriculture.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-white text-green-800 hover:bg-green-50">
+                {/* <Button asChild size="lg" className="bg-white text-green-800 hover:bg-green-50">
                   <Link href="/shop">Shop Now</Link>
-                </Button>
+                </Button> */}
                 <Button
                   asChild
                   size="lg"
@@ -29,14 +29,14 @@ export default function HomePage() {
                 >
                   <Link href="/automation">Explore Automation</Link>
                 </Button>
-                <Button
+                {/* <Button
                   asChild
                   size="lg"
                   variant="outline"
                   className="border-white text-white hover:bg-white hover:text-green-800 bg-transparent"
                 >
                   <Link href="/login">Login to Dashboard</Link>
-                </Button>
+                </Button> */}
               </div>
             </div>
             <div className="relative">

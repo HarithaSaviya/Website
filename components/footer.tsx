@@ -27,9 +27,9 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/shop" className="text-green-100 hover:text-white">
+                {/* <Link href="/shop" className="text-green-100 hover:text-white">
                   Shop
-                </Link>
+                </Link> */}
               </li>
               <li>
                 <Link href="/automation" className="text-green-100 hover:text-white">
