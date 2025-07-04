@@ -108,7 +108,7 @@ export default function AutomationPage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/automation/img_01.jpg?height=400&width=600"
                 alt="IoT Agriculture Dashboard"
                 width={600}
                 height={400}

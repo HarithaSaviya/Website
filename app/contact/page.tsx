@@ -71,9 +71,11 @@ export default function ContactPage() {
                   <div>
                     <p className="font-medium">Address</p>
                     <p className="text-gray-600">
-                      123 Agriculture Lane
+                      Haritha Saviya Agro Park,<br />
+                      Wavegodawaththa,
                       <br />
-                      Colombo 07, Sri Lanka
+                      Mirahawaththa,<br />
+                      Bandarawela, Sri Lanka
                     </p>
                   </div>
                 </div>
@@ -81,8 +83,8 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 text-green-600 mt-1" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-gray-600">+94 77 123 4567</p>
-                    <p className="text-gray-600">+94 11 234 5678</p>
+                    <p className="text-gray-600">+94 70 742 0147</p>
+                    <p className="text-gray-600">+94 71 442 0147</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -112,17 +114,21 @@ export default function ContactPage() {
               <CardContent>
                 <div className="space-y-3">
                   <Button className="w-full bg-green-600 hover:bg-green-700" asChild>
-                    <a href="https://wa.me/94771234567" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/94707420147" target="_blank" rel="noopener noreferrer">
                       <MessageSquare className="h-4 w-4 mr-2" />
                       WhatsApp Support
                     </a>
                   </Button>
+
                   <Button
                     variant="outline"
                     className="w-full border-green-600 text-green-600 hover:bg-green-50 bg-transparent"
+                    asChild
                   >
-                    <Phone className="h-4 w-4 mr-2" />
-                    Call Now
+                    <a href="tel:+94707420147">
+                      <Phone className="h-4 w-4 mr-2" />
+                      Call Now
+                    </a>
                   </Button>
                 </div>
               </CardContent>
@@ -226,11 +232,19 @@ export default function ContactPage() {
             <CardTitle className="text-green-800">Find Us</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">Interactive Google Map would be embedded here</p>
+            <div className="h-64 rounded-lg overflow-hidden">
+              <iframe
+                title="Google Map"
+                className="w-full h-full border-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.250922701186!2d80.93594578376342!3d6.860501801480223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae47b2927e605cb%3A0x30c275fe2e8713e3!2sHaritha%20Saviya%20Agro%20Park!5e0!3m2!1sen!2slk!4v1751636891400!5m2!1sen!2slk"
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </CardContent>
         </Card>
+
       </div>
     </div>
   )

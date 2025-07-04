@@ -41,7 +41,7 @@ export default function HomePage() {
             </div>
             <div className="relative">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/home/home_img.jpg?height=400&width=600"
                 alt="Modern greenhouse with IoT systems"
                 width={600}
                 height={400}
