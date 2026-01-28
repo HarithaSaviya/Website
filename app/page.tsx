@@ -121,9 +121,9 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold mb-4">Ready to Start Your Smart Farming Journey?</h2>
           <p className="text-xl mb-8 text-green-100">Join hundreds of satisfied customers who trust Haritha Saviya</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="bg-white text-green-800 hover:bg-green-50">
+            {/* <Button asChild size="lg" className="bg-white text-green-800 hover:bg-green-50">
               <Link href="/shop">Browse Products</Link>
-            </Button>
+            </Button> */}
             <Button
               asChild
               size="lg"

@@ -200,7 +200,6 @@ export default function AutomationPage() {
                 )}
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl">{pkg.name}</CardTitle>
-                  <div className="text-3xl font-bold text-green-600">{pkg.price}</div>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <ul className="space-y-2">
