@@ -1,91 +1,92 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, ShoppingCart, Leaf, User } from "lucide-react"
-import { useCart } from "@/components/cart-provider"
+import { Menu } from "lucide-react"
 import Image from "next/image"
+import { NAV_LINKS, SITE_NAME, SITE_NAME_SI } from "@/lib/site"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const { items } = useCart()
-  const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
+  const [scrolled, setScrolled] = useState(false)
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    // { name: "Shop", href: "/shop" },
-    { name: "Automation", href: "/automation" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
-  ]
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <nav className="bg-white shadow-sm border-b border-green-100 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
+    <nav
+      className="nav-blur sticky top-0 z-50 pt-[env(safe-area-inset-top,0px)]"
+      data-scrolled={scrolled}
+      aria-label="Primary"
+    >
+      <div className="section-container">
+        <div className="flex h-14 items-center justify-between gap-3 sm:h-16 md:h-[4.25rem]">
+          <Link href="/" className="flex min-w-0 items-center gap-2 group sm:gap-2.5">
             <Image
               src="/logo2.png"
-              alt="Haritha Saviya Logo"
+              alt={`${SITE_NAME} Logo`}
               width={80}
               height={40}
-              className="h-10"
+              className="h-8 w-auto sm:h-9 md:h-10 transition-transform duration-300 group-hover:scale-[1.02]"
               priority
             />
+            <span className="hidden min-w-0 flex-col leading-tight sm:flex">
+              <span className="font-sinhala truncate text-sm font-semibold text-primary">{SITE_NAME_SI}</span>
+              <span className="font-display text-xs tracking-wide text-muted-foreground">{SITE_NAME}</span>
+            </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <Link key={item.name} href={item.href} className="text-gray-700 hover:text-green-600 transition-colors">
+          <div className="hidden items-center gap-6 md:flex lg:gap-7">
+            {NAV_LINKS.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-foreground/70 transition-colors duration-200 hover:text-primary"
+              >
                 {item.name}
               </Link>
             ))}
           </div>
 
-          {/* Right side buttons */}
-          <div className="flex items-center space-x-4">
-            {/* <Button asChild variant="ghost" size="sm">
-              <Link href="/login">
-                <User className="h-4 w-4 mr-2" />
-                Login
-              </Link>
-            </Button> */}
-            {/* <Button asChild variant="ghost" size="sm" className="relative">
-              <Link href="/cart">
-                <ShoppingCart className="h-4 w-4" />
-                {itemCount > 0 && (
-                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-green-600">
-                    {itemCount}
-                  </Badge>
-                )}
-              </Link>
-            </Button> */}
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <Button
+              asChild
+              size="sm"
+              className="hidden bg-primary text-primary-foreground shadow-sm shadow-primary/25 hover:bg-primary/90 sm:inline-flex"
+            >
+              <Link href="/contact">Visit</Link>
+            </Button>
 
-            {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="sm">
-                  <Menu className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-11 w-11" aria-label="Open menu">
+                  <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
+              <SheetContent side="right" className="w-[min(100vw-1.5rem,20rem)] max-w-[100vw] px-5">
+                <div className="mt-10 flex flex-col gap-1">
+                  <p className="font-sinhala mb-4 text-lg font-semibold text-primary">{SITE_NAME_SI}</p>
+                  {NAV_LINKS.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="text-lg text-gray-700 hover:text-green-600 transition-colors"
+                      className="rounded-md px-3 py-3 text-base text-foreground transition-colors hover:bg-accent"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
                     </Link>
                   ))}
+                  <Button asChild className="mt-6 h-11 w-full bg-primary shadow-sm shadow-primary/25">
+                    <Link href="/contact" onClick={() => setIsOpen(false)}>
+                      Visit / get in touch
+                    </Link>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>

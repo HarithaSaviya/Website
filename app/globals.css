@@ -4,58 +4,67 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    /* Brighter highland farm palette — leaf green + sun gold */
+    --background: 85 35% 97%;
+    --foreground: 155 35% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 155 35% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --popover-foreground: 155 35% 12%;
+    --primary: 145 70% 36%;
+    --primary-foreground: 90 40% 98%;
+    --secondary: 120 40% 92%;
+    --secondary-foreground: 145 50% 20%;
+    --muted: 110 30% 93%;
+    --muted-foreground: 150 12% 38%;
+    --accent: 48 95% 52%;
+    --accent-foreground: 40 60% 12%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 130 25% 82%;
+    --input: 130 25% 82%;
+    --ring: 145 70% 36%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 145 70% 40%;
+    --chart-2: 173 55% 40%;
+    --chart-3: 48 90% 50%;
+    --chart-4: 200 55% 45%;
+    --chart-5: 25 70% 50%;
+    --forest: 152 55% 18%;
+    --sage: 130 45% 72%;
+    --sun: 48 95% 52%;
+    --mint: 140 45% 94%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 142.1 70.6% 45.3%;
-    --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 150 20% 8%;
+    --foreground: 90 15% 96%;
+    --card: 150 18% 11%;
+    --card-foreground: 90 15% 96%;
+    --popover: 150 18% 11%;
+    --popover-foreground: 90 15% 96%;
+    --primary: 145 60% 45%;
+    --primary-foreground: 150 30% 8%;
+    --secondary: 150 14% 16%;
+    --secondary-foreground: 90 15% 96%;
+    --muted: 150 14% 16%;
+    --muted-foreground: 140 10% 65%;
+    --accent: 48 90% 48%;
+    --accent-foreground: 40 60% 10%;
+    --destructive: 0 62% 40%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --border: 150 12% 20%;
+    --input: 150 12% 20%;
+    --ring: 145 60% 45%;
+    --chart-1: 152 50% 45%;
+    --chart-2: 160 45% 40%;
+    --chart-3: 48 85% 50%;
+    --chart-4: 200 45% 45%;
+    --chart-5: 340 50% 50%;
+    --forest: 155 35% 12%;
+    --sage: 130 30% 50%;
+    --sun: 48 90% 48%;
+    --mint: 145 25% 16%;
   }
 }
 
@@ -63,8 +72,169 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .font-sinhala {
+    font-family: var(--font-sinhala), var(--font-sans), system-ui, sans-serif;
+  }
+
+  .section-pad {
+    @apply py-12 sm:py-16 md:py-24;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 sm:px-5 md:px-6;
+  }
+
+  .hero-shell {
+    @apply relative isolate overflow-hidden text-white;
+    min-height: min(78svh, 36rem);
+  }
+
+  @media (min-width: 768px) {
+    .hero-shell {
+      min-height: min(92vh, 52rem);
+    }
+  }
+
+  .hero-shell-short {
+    @apply relative isolate overflow-hidden text-white;
+    min-height: min(58svh, 26rem);
+  }
+
+  @media (min-width: 768px) {
+    .hero-shell-short {
+      min-height: min(70vh, 36rem);
+    }
+  }
+
+  .hero-content {
+    @apply section-container relative flex flex-col justify-end;
+    min-height: inherit;
+    padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+    padding-bottom: max(2.5rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (min-width: 768px) {
+    .hero-content {
+      padding-top: 8rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  .btn-mobile-block {
+    @apply w-full sm:w-auto;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(180deg, hsl(152 55% 12% / 0.45) 0%, hsl(152 50% 10% / 0.65) 50%, hsl(152 55% 8% / 0.82) 100%),
+      radial-gradient(ellipse 70% 55% at 15% 35%, hsl(145 70% 36% / 0.35), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 85% 70%, hsl(48 95% 52% / 0.18), transparent 50%);
+  }
+
+  .hero-grain::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  .brand-underline {
+    background-image: linear-gradient(90deg, hsl(var(--sun)), hsl(145 70% 45%));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 0.22em;
+  }
+
+  .section-mint {
+    background:
+      linear-gradient(180deg, hsl(var(--mint)) 0%, hsl(85 35% 97%) 100%);
+  }
+
+  .cta-band {
+    background:
+      radial-gradient(ellipse 80% 70% at 90% 10%, hsl(48 95% 52% / 0.22), transparent 50%),
+      radial-gradient(ellipse 60% 60% at 10% 80%, hsl(145 70% 40% / 0.35), transparent 55%),
+      hsl(var(--forest));
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-rise {
+    animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-rise-delay {
+    animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out both;
+  }
+
+  .nav-blur {
+    @apply bg-background/85 backdrop-blur-md border-b border-primary/10;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .nav-blur[data-scrolled="true"] {
+    @apply bg-background/95 shadow-sm border-primary/15;
+  }
+
+  .reveal-section {
+    animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  @supports not (animation-timeline: view()) {
+    .reveal-section {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

@@ -13,12 +13,21 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.25rem",
+        md: "2rem",
+      },
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        sinhala: ["var(--font-sinhala)", "var(--font-sans)", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,18 +62,10 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        green: {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          300: "#86efac",
-          400: "#4ade80",
-          500: "#22c55e",
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
-        },
+        forest: "hsl(var(--forest))",
+        sage: "hsl(var(--sage))",
+        sun: "hsl(var(--sun))",
+        mint: "hsl(var(--mint))",
       },
       borderRadius: {
         lg: "var(--radius)",

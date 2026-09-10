@@ -1,17 +1,16 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useToast } from "@/hooks/use-toast"
 import { Leaf, Eye, EyeOff } from "lucide-react"
+import { SITE_NAME } from "@/lib/site"
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -32,7 +31,6 @@ export default function LoginPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate login process
     setTimeout(() => {
       if (formData.email === "demo@harithasaviya.lk" && formData.password === "demo123") {
         toast({
@@ -52,100 +50,93 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-green-50 flex items-center justify-center py-12 px-4">
+    <div className="flex min-h-[70vh] items-center justify-center bg-secondary/30 px-4 py-16">
       <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center space-x-2">
-            <Leaf className="h-8 w-8 text-green-600" />
-            <span className="text-2xl font-bold text-green-800">Haritha Saviya</span>
+        <div className="mb-8 text-center">
+          <Link href="/" className="inline-flex items-center gap-2">
+            <Leaf className="h-7 w-7 text-primary" aria-hidden />
+            <span className="font-display text-xl font-semibold text-foreground">{SITE_NAME}</span>
           </Link>
-          <p className="text-gray-600 mt-2">Access your IoT dashboard</p>
+          <p className="mt-2 text-sm text-muted-foreground">Access your IoT dashboard</p>
         </div>
 
-        <Card className="border-green-200">
-          <CardHeader>
-            <CardTitle className="text-center text-green-800">Sign In</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="email">Email Address</Label>
+        <div className="rounded-lg border border-border bg-card p-6 shadow-sm md:p-8">
+          <h1 className="text-center font-display text-2xl font-semibold">Sign in</h1>
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <div className="relative">
                 <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  placeholder="Enter your email"
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={(e) => handleInputChange("password", e.target.value)}
+                  placeholder="Enter your password"
                   required
                 />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-4 w-4 text-muted-foreground" />
+                  ) : (
+                    <Eye className="h-4 w-4 text-muted-foreground" />
+                  )}
+                </Button>
               </div>
-
-              <div>
-                <Label htmlFor="password">Password</Label>
-                <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4 text-gray-400" />
-                    ) : (
-                      <Eye className="h-4 w-4 text-gray-400" />
-                    )}
-                  </Button>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="remember"
-                    checked={formData.rememberMe}
-                    onCheckedChange={(checked) => handleInputChange("rememberMe", checked as boolean)}
-                  />
-                  <Label htmlFor="remember" className="text-sm">
-                    Remember me
-                  </Label>
-                </div>
-                <Link href="/forgot-password" className="text-sm text-green-600 hover:text-green-700">
-                  Forgot password?
-                </Link>
-              </div>
-
-              <Button type="submit" className="w-full bg-green-600 hover:bg-green-700" disabled={isLoading}>
-                {isLoading ? "Signing in..." : "Sign In"}
-              </Button>
-            </form>
-
-            <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
-                Don't have an account?{" "}
-                <Link href="/contact" className="text-green-600 hover:text-green-700 font-medium">
-                  Contact us for access
-                </Link>
-              </p>
             </div>
 
-            {/* Demo Credentials */}
-            <div className="mt-6 p-4 bg-green-50 rounded-lg">
-              <p className="text-sm font-medium text-green-800 mb-2">Demo Credentials:</p>
-              <p className="text-sm text-green-700">Email: demo@harithasaviya.lk</p>
-              <p className="text-sm text-green-700">Password: demo123</p>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Checkbox
+                  id="remember"
+                  checked={formData.rememberMe}
+                  onCheckedChange={(checked) => handleInputChange("rememberMe", checked as boolean)}
+                />
+                <Label htmlFor="remember" className="text-sm font-normal">
+                  Remember me
+                </Label>
+              </div>
+              <Link href="/contact" className="text-sm text-primary hover:underline">
+                Need help?
+              </Link>
             </div>
-          </CardContent>
-        </Card>
+
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
+
+          <p className="mt-6 text-center text-sm text-muted-foreground">
+            Don&apos;t have an account?{" "}
+            <Link href="/contact" className="font-medium text-primary hover:underline">
+              Contact us for access
+            </Link>
+          </p>
+
+          <div className="mt-6 rounded-md bg-secondary/60 p-4 text-sm">
+            <p className="font-medium text-foreground">Demo credentials</p>
+            <p className="mt-1 text-muted-foreground">Email: demo@harithasaviya.lk</p>
+            <p className="text-muted-foreground">Password: demo123</p>
+          </div>
+        </div>
       </div>
     </div>
   )

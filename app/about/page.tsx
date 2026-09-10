@@ -1,279 +1,150 @@
+import type { Metadata } from "next"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Leaf, Users, Award, Target, Heart, Lightbulb } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { BreadcrumbJsonLd } from "@/components/json-ld"
+import { SITE_NAME, SITE_URL, WHATSAPP_URL } from "@/lib/site"
+
+const title = "About Haritha Saviya (හරිත සවිය) — Agro Park in Mirahawaththa"
+const description =
+  "Learn about Haritha Saviya Agro Park in Mirahawaththa, Bandarawela — nursery plants, seeds, greenhouse gardening, ~10 acres of upcountry vegetables and ~50,000 sq ft of polytunnels."
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title,
+    description:
+      "Nursery plants, seeds, and greenhouse gardening at Haritha Saviya Agro Park in Bandarawela. Visitors welcome.",
+    url: `${SITE_URL}/about`,
+    images: [
+      {
+        url: "/about/img_01.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Greenhouse at Haritha Saviya Agro Park in Mirahawaththa, Bandarawela",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description:
+      "Nursery plants, seeds, and greenhouse gardening at Haritha Saviya Agro Park in Bandarawela. Visitors welcome.",
+    images: ["/about/img_01.jpg"],
+  },
+}
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Leaf,
-      title: "Sustainability",
-      description:
-        "We're committed to environmentally friendly farming practices that protect our planet for future generations.",
-    },
-    {
-      icon: Lightbulb,
-      title: "Innovation",
-      description:
-        "Embracing cutting-edge technology to revolutionize traditional farming methods and increase efficiency.",
-    },
-    {
-      icon: Heart,
-      title: "Quality",
-      description:
-        "Every product we grow and every system we install meets the highest standards of quality and reliability.",
-    },
-    {
-      icon: Users,
-      title: "Community",
-      description: "Supporting local farmers and communities through knowledge sharing and sustainable practices.",
-    },
-  ]
-
-  const team = [
-    {
-      name: "Priya Wickramasinghe",
-      role: "Founder & CEO",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Agricultural engineer with 15+ years of experience in sustainable farming.",
-    },
-    {
-      name: "Kasun Perera",
-      role: "IoT Systems Director",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Technology expert specializing in agricultural automation and IoT solutions.",
-    },
-    {
-      name: "Sanduni Fernando",
-      role: "Head of Operations",
-      image: "/placeholder.svg?height=200&width=200",
-      description: "Operations specialist ensuring quality from farm to customer delivery.",
-    },
-  ]
-
-  const achievements = [
-    { number: "500+", label: "Happy Customers" },
-    { number: "25+", label: "IoT Systems Installed" },
-    { number: "50+", label: "Plant Varieties" },
-    { number: "5", label: "Years of Excellence" },
-  ]
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 to-green-800 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h1 className="text-5xl font-bold mb-6">About Haritha Saviya</h1>
-            <p className="text-xl text-green-100 max-w-3xl mx-auto">
-              Pioneering the future of agriculture through sustainable farming practices and innovative IoT technology
-              solutions.
+    <div>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]}
+      />
+
+      <section className="hero-shell-short">
+        <Image
+          src="/about/img_01.jpg"
+          alt="Greenhouse and nursery growing at Haritha Saviya Agro Park, Mirahawaththa, Bandarawela"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center animate-fade-in"
+        />
+        <div className="hero-overlay absolute inset-0" aria-hidden />
+        <div className="hero-grain absolute inset-0" aria-hidden />
+        <div className="hero-content">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="animate-rise font-display text-[2rem] font-semibold sm:text-4xl md:text-5xl lg:text-6xl">
+              {SITE_NAME}
+            </h1>
+            <p className="animate-rise-delay mx-auto mt-3 max-w-2xl text-base text-white/90 sm:mt-4 sm:text-lg">
+              An agro park in Mirahawaththa, Bandarawela — nursery plants, seeds, and greenhouse gardening in the
+              highlands.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Our Story</h2>
-              <p className="text-gray-600 mb-4">
-                Founded in 2019, Haritha Saviya began as a small greenhouse operation with a big vision: to transform
-                agriculture through sustainable practices and smart technology. What started as a passion project has
-                grown into Sri Lanka's leading provider of fresh produce and agricultural IoT solutions.
+      <section className="section-pad section-mint">
+        <div className="section-container reveal-section">
+          <div className="mx-auto max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary sm:text-sm">Our story</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold text-foreground sm:text-3xl md:text-4xl">
+              Growing in the highlands
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
+              <p>
+                Haritha Saviya Agro Park sits at Wavegodawaththa, Mirahawaththa, in Bandarawela. It is a working farm
+                focused on nursery plants, seeds, and home and greenhouse gardening — the same work we share on
+                Facebook and TikTok.
               </p>
-              <p className="text-gray-600 mb-4">
-                Our journey began when our founder, Priya Wickramasinghe, recognized the need for more efficient and
-                sustainable farming methods. Combining her agricultural expertise with cutting-edge IoT technology, she
-                created systems that not only increase crop yields but also conserve water and reduce environmental
-                impact.
+              <p>
+                The park covers around 10 acres of upcountry vegetables, with about 50,000 square feet of polytunnels
+                and greenhouses for protected growing.
               </p>
-              <p className="text-gray-600">
-                Today, we serve hundreds of customers across Sri Lanka, from individual households seeking fresh produce
-                to large-scale farmers implementing smart agriculture solutions. Our commitment to quality,
-                sustainability, and innovation remains at the heart of everything we do.
+              <p>
+                Visitors are welcome today. Call or WhatsApp before you come so we can receive you. Official guided
+                tours and an on-site catalog are coming soon.
               </p>
-            </div>
-            <div className="relative">
-              <Image
-                src="/about/img_01.jpg?height=400&width=600"
-                alt="Haritha Saviya greenhouse facility"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-green-200">
-              <CardContent className="p-8 text-center">
-                <Target className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Our Mission</h3>
-                <p className="text-gray-600">
-                  To provide fresh, high-quality produce while empowering farmers with innovative IoT solutions that
-                  promote sustainable agriculture and improve crop yields.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-green-200">
-              <CardContent className="p-8 text-center">
-                <Award className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Our Vision</h3>
-                <p className="text-gray-600">
-                  To be the leading force in Sri Lanka's agricultural transformation, creating a sustainable future
-                  where technology and nature work in perfect harmony.
-                </p>
-              </CardContent>
-            </Card>
+      <section className="border-y border-primary/15 bg-secondary">
+        <div className="section-container section-pad">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 md:gap-16">
+            <div className="reveal-section rounded-lg border border-primary/20 bg-card p-5 shadow-sm sm:p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-primary">Land</p>
+              <h2 className="mt-2 font-display text-xl font-semibold text-foreground sm:text-2xl">Sustainability</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                We grow in the Bandarawela highlands with care for the land, using protected agriculture alongside
+                open-field crops.
+              </p>
+            </div>
+            <div className="reveal-section rounded-lg border border-sun/30 bg-card p-5 shadow-sm sm:p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent-foreground/70">Craft</p>
+              <h2 className="mt-2 font-display text-xl font-semibold text-foreground sm:text-2xl">Quality</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Plants, seeds, and greenhouse growing are the heart of the park. We keep that work simple, honest, and
+                close to the soil.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-green-800 mb-4">Our Values</h2>
-            <p className="text-lg text-gray-600">The principles that guide everything we do</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <Card key={index} className="border-green-200 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <value.icon className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-                  <p className="text-gray-600">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-green-800 mb-4">Meet Our Team</h2>
-            <p className="text-lg text-gray-600">The passionate people behind Haritha Saviya</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <Card key={index} className="border-green-200 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    width={200}
-                    height={200}
-                    className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                  />
-                  <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                  <Badge className="mb-3 bg-green-600">{member.role}</Badge>
-                  <p className="text-gray-600">{member.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="py-16 bg-green-800 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Achievements</h2>
-            <p className="text-xl text-green-100">Numbers that reflect our commitment to excellence</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl font-bold mb-2">{achievement.number}</div>
-                <div className="text-green-100">{achievement.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-green-800 mb-4">What Our Customers Say</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-green-200">
-              <CardContent className="p-6">
-                <p className="text-gray-600 mb-4">
-                  "The IoT system from Haritha Saviya has revolutionized my farming. I can monitor and control
-                  everything from my phone, and my crop yields have increased by 40%."
-                </p>
-                <div className="flex items-center">
-                  <Image
-                    src="/placeholder.svg?height=50&width=50"
-                    alt="Customer"
-                    width={50}
-                    height={50}
-                    className="rounded-full mr-3"
-                  />
-                  <div>
-                    <p className="font-semibold">Nimal Rajapaksa</p>
-                    <p className="text-sm text-gray-500">Greenhouse Owner</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-green-200">
-              <CardContent className="p-6">
-                <p className="text-gray-600 mb-4">
-                  "Fresh vegetables delivered right to my door! The quality is exceptional and the online ordering
-                  system is so convenient. Highly recommended!"
-                </p>
-                <div className="flex items-center">
-                  <Image
-                    src="/placeholder.svg?height=50&width=50"
-                    alt="Customer"
-                    width={50}
-                    height={50}
-                    className="rounded-full mr-3"
-                  />
-                  <div>
-                    <p className="font-semibold">Chamari Silva</p>
-                    <p className="text-sm text-gray-500">Regular Customer</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-green-200">
-              <CardContent className="p-6">
-                <p className="text-gray-600 mb-4">
-                  "The nursery plants I bought are thriving in my garden. The team's expertise and after-sales support
-                  have been outstanding."
-                </p>
-                <div className="flex items-center">
-                  <Image
-                    src="/placeholder.svg?height=50&width=50"
-                    alt="Customer"
-                    width={50}
-                    height={50}
-                    className="rounded-full mr-3"
-                  />
-                  <div>
-                    <p className="font-semibold">Rohan Fernando</p>
-                    <p className="text-sm text-gray-500">Home Gardener</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+      <section className="cta-band text-primary-foreground">
+        <div className="section-container section-pad text-center">
+          <h2 className="font-display text-2xl font-semibold sm:text-3xl md:text-4xl">Plan a visit</h2>
+          <p className="mx-auto mt-3 max-w-xl text-base text-primary-foreground/85 sm:mt-4 sm:text-lg">
+            We would like to show you the park. Get in touch to arrange a time.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="btn-mobile-block h-12 bg-sun text-accent-foreground shadow-md shadow-sun/25 hover:bg-sun/90"
+            >
+              <Link href="/contact">Contact us</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="btn-mobile-block h-12 border-sun/50 bg-white/10 text-white hover:bg-white/20 hover:text-white"
+            >
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+            </Button>
           </div>
         </div>
       </section>
